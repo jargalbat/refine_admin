@@ -1,20 +1,21 @@
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GitHubBanner, Refine, WelcomePage } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-
 import { useNotificationProvider } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
-
 import routerBindings, {
   DocumentTitleHandler,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
 import { App as AntdApp } from "antd";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import authProvider from "./authProvider";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { supabaseClient } from "./utility";
+import HomePage from "./pages/HomePage";
+import TalentsList from "./pages/talents/list";
 
 function App() {
   return (
@@ -34,11 +35,12 @@ function App() {
                   syncWithLocation: true,
                   warnWhenUnsavedChanges: true,
                   useNewQueryKeys: true,
-                  projectId: "Xb6ncE-IYOU3j-1Bk2Wy",
+                  projectId: "aushmxjpwjshmxjmbinr",
                 }}
               >
                 <Routes>
-                  <Route index element={<WelcomePage />} />
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/talents" element={<TalentsList />} />
                 </Routes>
                 <RefineKbar />
                 <UnsavedChangesNotifier />
